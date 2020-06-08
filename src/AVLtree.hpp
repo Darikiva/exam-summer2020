@@ -120,6 +120,6 @@ private:
     }
 };
 
-#include "AVLTree.tpp"
+#include "AVLtree.tpp"
 
 #endif //EXAM_SUMMER2020_AVLTREE_HPP
