@@ -84,7 +84,7 @@ constexpr void restore_heap(It first, It last, std::vector<exam::sort::change::C
             std::iter_swap(current, selected_child);
             current = selected_child;
             current_pos = selected_pos;
-            child_pos = 2 * child_pos + 1;
+            child_pos = 2 * selected_pos + 1;
             if (child_pos < size) {
                 child = std::next(first, child_pos);
             }
@@ -459,7 +459,8 @@ struct Sort<type::Heap>
         detail::heapify(first, last, changes, comp);
         int size = std::distance(first, last);
         --size;
-        while (size > 0) {
+        int temp = size;
+        while (size >= 0) {
             auto to_swap = std::next(first, size);
             changes.emplace_back(exam::sort::change::Swap{to_swap, first});
             std::iter_swap(to_swap, first);
