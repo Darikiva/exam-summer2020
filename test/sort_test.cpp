@@ -61,7 +61,7 @@ TEST_CASE("[exam][sort]") {
             SUBCASE("Direct order") {
                 auto results = RAIter_cases;
                 for (size_t case_id = 0; case_id < RAIter_cases.size(); ++case_id) {
-                    Sort<Bubble>{}(results[case_id].begin(), results[case_id].end(), std::less{});
+                    Sort<Bubble>{}(results[case_id].begin(), results[case_id].end());
                     REQUIRE(results[case_id] == RAIter_direct_expected[case_id]);
                 }
             }
@@ -77,7 +77,7 @@ TEST_CASE("[exam][sort]") {
             SUBCASE("Direct order") {
                 auto results = BIter_cases;
                 for (size_t case_id = 0; case_id < BIter_cases.size(); ++case_id) {
-                    Sort<Bubble>{}(results[case_id].begin(), results[case_id].end(), std::less{});
+                    Sort<Bubble>{}(results[case_id].begin(), results[case_id].end());
                     REQUIRE(results[case_id] == BIter_direct_expected[case_id]);
                 }
             }
@@ -93,7 +93,7 @@ TEST_CASE("[exam][sort]") {
             SUBCASE("Direct order") {
                 auto results = FIter_cases;
                 for (size_t case_id = 0; case_id < FIter_cases.size(); ++case_id) {
-                    Sort<Bubble>{}(results[case_id].begin(), results[case_id].end(), std::less{});
+                    Sort<Bubble>{}(results[case_id].begin(), results[case_id].end());
                     REQUIRE(results[case_id] == FIter_direct_expected[case_id]);
                 }
             }
@@ -111,7 +111,7 @@ TEST_CASE("[exam][sort]") {
             SUBCASE("Direct order") {
                 auto results = RAIter_cases;
                 for (size_t case_id = 0; case_id < RAIter_cases.size(); ++case_id) {
-                    Sort<Quick>{}(results[case_id].begin(), results[case_id].end(), std::less{});
+                    Sort<Quick>{}(results[case_id].begin(), results[case_id].end());
                     REQUIRE(results[case_id] == RAIter_direct_expected[case_id]);
                 }
             }
@@ -127,7 +127,7 @@ TEST_CASE("[exam][sort]") {
             SUBCASE("Direct order") {
                 auto results = BIter_cases;
                 for (size_t case_id = 0; case_id < BIter_cases.size(); ++case_id) {
-                    Sort<Quick>{}(results[case_id].begin(), results[case_id].end(), std::less{});
+                    Sort<Quick>{}(results[case_id].begin(), results[case_id].end());
                     REQUIRE(results[case_id] == BIter_direct_expected[case_id]);
                 }
             }
@@ -143,7 +143,7 @@ TEST_CASE("[exam][sort]") {
             SUBCASE("Direct order") {
                 auto results = FIter_cases;
                 for (size_t case_id = 0; case_id < FIter_cases.size(); ++case_id) {
-                    Sort<Quick>{}(results[case_id].begin(), results[case_id].end(), std::less{});
+                    Sort<Quick>{}(results[case_id].begin(), results[case_id].end());
                     REQUIRE(results[case_id] == FIter_direct_expected[case_id]);
                 }
             }
@@ -161,7 +161,7 @@ TEST_CASE("[exam][sort]") {
             SUBCASE("Direct order") {
                 auto results = RAIter_cases;
                 for (size_t case_id = 0; case_id < RAIter_cases.size(); ++case_id) {
-                    Sort<Insertion>{}(results[case_id].begin(), results[case_id].end(), std::less{});
+                    Sort<Insertion>{}(results[case_id].begin(), results[case_id].end());
                     REQUIRE(results[case_id] == RAIter_direct_expected[case_id]);
                 }
             }
@@ -177,7 +177,7 @@ TEST_CASE("[exam][sort]") {
             SUBCASE("Direct order") {
                 auto results = BIter_cases;
                 for (size_t case_id = 0; case_id < BIter_cases.size(); ++case_id) {
-                    Sort<Insertion>{}(results[case_id].begin(), results[case_id].end(), std::less{});
+                    Sort<Insertion>{}(results[case_id].begin(), results[case_id].end());
                     REQUIRE(results[case_id] == BIter_direct_expected[case_id]);
                 }
             }
@@ -193,7 +193,7 @@ TEST_CASE("[exam][sort]") {
             SUBCASE("Direct order") {
                 auto results = FIter_cases;
                 for (size_t case_id = 0; case_id < FIter_cases.size(); ++case_id) {
-                    Sort<Insertion>{}(results[case_id].begin(), results[case_id].end(), std::less{});
+                    Sort<Insertion>{}(results[case_id].begin(), results[case_id].end());
                     REQUIRE(results[case_id] == FIter_direct_expected[case_id]);
                 }
             }
@@ -211,7 +211,7 @@ TEST_CASE("[exam][sort]") {
             SUBCASE("Direct order") {
                 auto results = RAIter_cases;
                 for (size_t case_id = 0; case_id < RAIter_cases.size(); ++case_id) {
-                    Sort<Merge>{}(results[case_id].begin(), results[case_id].end(), std::less{});
+                    Sort<Merge>{}(results[case_id].begin(), results[case_id].end());
                     REQUIRE(results[case_id] == RAIter_direct_expected[case_id]);
                 }
             }
@@ -227,7 +227,7 @@ TEST_CASE("[exam][sort]") {
             SUBCASE("Direct order") {
                 auto results = BIter_cases;
                 for (size_t case_id = 0; case_id < BIter_cases.size(); ++case_id) {
-                    Sort<Merge>{}(results[case_id].begin(), results[case_id].end(), std::less{});
+                    Sort<Merge>{}(results[case_id].begin(), results[case_id].end());
                     REQUIRE(results[case_id] == BIter_direct_expected[case_id]);
                 }
             }
@@ -243,7 +243,7 @@ TEST_CASE("[exam][sort]") {
             SUBCASE("Direct order") {
                 auto results = FIter_cases;
                 for (size_t case_id = 0; case_id < FIter_cases.size(); ++case_id) {
-                    Sort<Merge>{}(results[case_id].begin(), results[case_id].end(), std::less{});
+                    Sort<Merge>{}(results[case_id].begin(), results[case_id].end());
                     REQUIRE(results[case_id] == FIter_direct_expected[case_id]);
                 }
             }
@@ -261,7 +261,7 @@ TEST_CASE("[exam][sort]") {
             SUBCASE("Direct order") {
                 auto results = RAIter_cases;
                 for (size_t case_id = 0; case_id < RAIter_cases.size(); ++case_id) {
-                    Sort<Selection>{}(results[case_id].begin(), results[case_id].end(), std::less{});
+                    Sort<Selection>{}(results[case_id].begin(), results[case_id].end());
                     REQUIRE(results[case_id] == RAIter_direct_expected[case_id]);
                 }
             }
@@ -277,7 +277,7 @@ TEST_CASE("[exam][sort]") {
             SUBCASE("Direct order") {
                 auto results = BIter_cases;
                 for (size_t case_id = 0; case_id < BIter_cases.size(); ++case_id) {
-                    Sort<Selection>{}(results[case_id].begin(), results[case_id].end(), std::less{});
+                    Sort<Selection>{}(results[case_id].begin(), results[case_id].end());
                     REQUIRE(results[case_id] == BIter_direct_expected[case_id]);
                 }
             }
@@ -293,7 +293,7 @@ TEST_CASE("[exam][sort]") {
             SUBCASE("Direct order") {
                 auto results = FIter_cases;
                 for (size_t case_id = 0; case_id < FIter_cases.size(); ++case_id) {
-                    Sort<Selection>{}(results[case_id].begin(), results[case_id].end(), std::less{});
+                    Sort<Selection>{}(results[case_id].begin(), results[case_id].end());
                     REQUIRE(results[case_id] == FIter_direct_expected[case_id]);
                 }
             }
@@ -311,7 +311,7 @@ TEST_CASE("[exam][sort]") {
             SUBCASE("Direct order") {
                 auto results = RAIter_cases;
                 for (size_t case_id = 0; case_id < RAIter_cases.size(); ++case_id) {
-                    Sort<Heap>{}(results[case_id].begin(), results[case_id].end(), std::less{});
+                    Sort<Heap>{}(results[case_id].begin(), results[case_id].end());
                     REQUIRE(results[case_id] == RAIter_direct_expected[case_id]);
                 }
             }
@@ -327,7 +327,7 @@ TEST_CASE("[exam][sort]") {
             SUBCASE("Direct order") {
                 auto results = BIter_cases;
                 for (size_t case_id = 0; case_id < BIter_cases.size(); ++case_id) {
-                    Sort<Heap>{}(results[case_id].begin(), results[case_id].end(), std::less{});
+                    Sort<Heap>{}(results[case_id].begin(), results[case_id].end());
                     REQUIRE(results[case_id] == BIter_direct_expected[case_id]);
                 }
             }
@@ -343,7 +343,7 @@ TEST_CASE("[exam][sort]") {
             SUBCASE("Direct order") {
                 auto results = FIter_cases;
                 for (size_t case_id = 0; case_id < FIter_cases.size(); ++case_id) {
-                    Sort<Heap>{}(results[case_id].begin(), results[case_id].end(), std::less{});
+                    Sort<Heap>{}(results[case_id].begin(), results[case_id].end());
                     REQUIRE(results[case_id] == FIter_direct_expected[case_id]);
                 }
             }

@@ -28,7 +28,6 @@ constexpr void heapify(It first, It last, std::vector<exam::sort::change::Change
 
         auto begin_saved = begin;
         size_t begin_pos_saved = begin_pos;
-        changes.emplace_back(exam::sort::change::Compare<It>{father, begin});
         while ((begin_pos != 0) && (comparator(*father, *begin))) {
             changes.emplace_back(exam::sort::change::Swap<It>{father, begin});
             std::iter_swap(father, begin);
@@ -68,7 +67,6 @@ constexpr void restore_heap(It first, It last, std::vector<exam::sort::change::C
         size_t selected_pos = child_pos;
         if (child_pos < size) {
             if (child_pos + 1 < size) {
-                changes.emplace_back(exam::sort::change::Compare<It>{child, std::next(child)});
                 if (comparator(*child, *std::next(child))) {
                     selected_child = std::next(child);
                     selected_pos = child_pos + 1;
@@ -80,7 +78,6 @@ constexpr void restore_heap(It first, It last, std::vector<exam::sort::change::C
         } else {
             break;
         }
-        changes.emplace_back(exam::sort::change::Compare<It>{current, selected_child});
         if (comparator(*current, *selected_child)) {
             move_next = true;
             changes.emplace_back(exam::sort::change::Swap<It>{current, selected_child});
@@ -144,7 +141,6 @@ constexpr void quickSort(FIter first, FIter last, std::vector<exam::sort::change
     std::iter_swap(std::next(first, distance / 2), end);
 
     auto mid = iterPartition(first, end, [&](const auto &el) {
-        changes.emplace_back(exam::sort::change::Compare<FIter>{el, end});
         if (comparator(*el, *end)) {
             changes.emplace_back(exam::sort::change::Swap<FIter>{el, end});
             return true;
@@ -175,7 +171,6 @@ constexpr void quickSort(RAIter first, RAIter last, std::vector<exam::sort::chan
     std::iter_swap(std::next(first, distance / 2), end);
 
     auto mid = iterPartition(first, end, [&](const auto &el) {
-        changes.emplace_back(exam::sort::change::Compare<RAIter>{el, end});
         if (comparator(*el, *end)) {
             changes.emplace_back(exam::sort::change::Swap<RAIter>{el, end});
             return true;
@@ -197,7 +192,6 @@ void selectionSort(It first, It last, std::vector<exam::sort::change::Change<It>
         for (auto it = first; it != last; ++it) { 
             auto key = it;
             if (key != first) {
-                changes.emplace_back(exam::sort::change::Compare<It>{key, std::prev(key)});
                 while ((key != first) && (comp(*key, *std::prev(key)))) {
                     changes.emplace_back(exam::sort::change::Swap<It>{key, std::prev(key)});
                     std::iter_swap(key, std::prev(key));
@@ -216,7 +210,6 @@ void selectionSort(It first, It last, std::vector<exam::sort::change::Change<It>
             auto key = it;
             if (key != first) {
                 auto prev = std::next(first, std::distance(first, key)-1);
-                changes.emplace_back(exam::sort::change::Compare<It>{key, prev});
                 while ((key != first) && (comp(*key, *prev))) {
                     changes.emplace_back(exam::sort::change::Swap<It>{key, prev});
                     std::iter_swap(key, prev);
@@ -370,7 +363,6 @@ struct Sort<type::Bubble>
             auto begin = first;
             auto next_iterator = std::next(begin);
             while (next_iterator != last) {
-                changes.emplace_back(exam::sort::change::Compare{next_iterator, begin});
                 if (comp(*next_iterator, *begin)) {
                     changes.emplace_back(exam::sort::change::Swap{next_iterator, begin});
                     std::iter_swap(next_iterator, begin);
