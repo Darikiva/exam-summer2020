@@ -52,6 +52,7 @@ class AVLTree {
         Iterator &operator++() {
             current_node = _next(current_node);
             ++current_position;
+            return *this;
         }
 
         bool operator!=(const Iterator &other) {
