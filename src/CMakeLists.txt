@@ -9,6 +9,7 @@ set(SRC_LIST
 		trees/BplusTree.hpp
         trees/BplusTree.tpp
 		trees/BTree.hpp
+		trees/BTree.tpp
 
         lists/DLsircular.hpp
         lists/DLsircular.tpp
