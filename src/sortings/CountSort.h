@@ -2,8 +2,8 @@
 // Created by Snegovsky Vlad on 09.06.2020.
 //
 
-#ifndef EXAM_SUMMER2020_COUNTINGSORT_H
-#define EXAM_SUMMER2020_COUNTINGSORT_H
+#ifndef EXAM_SUMMER2020_COUNTSORT_H
+#define EXAM_SUMMER2020_COUNTSORT_H
 
 #include <vector>
 #include <thread>
@@ -63,4 +63,4 @@ public:
     }
 };
 
-#endif //EXAM_SUMMER2020_COUNTINGSORT_H
+#endif //EXAM_SUMMER2020_COUNTSORT_H

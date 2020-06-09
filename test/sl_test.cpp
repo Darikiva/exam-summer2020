@@ -1,6 +1,8 @@
 #include "doctest.h"
 #include "lists/SL.hpp"
 
+using namespace exam::list;
+
 TEST_CASE("SL") {
     auto sl = new SL<int>{};
     sl->add(5);

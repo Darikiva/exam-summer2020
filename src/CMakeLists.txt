@@ -13,12 +13,18 @@ set(SRC_LIST
         trees/splay_map.hpp
 		trees/BplusTree.hpp
         trees/BplusTree.tpp
+		trees/BTree.hpp
+		trees/BTree.tpp
 
 
         lists/DLsircular.hpp
         lists/DLsircular.tpp
 		lists/SL.hpp
-		lists/SLsircular.tpp lists/SLsircular.hpp sortings/BucketSort.h sortings/CountingSort.h)
+		lists/SLsircular.tpp lists/SLsircular.hpp
+		
+		types/Official.hpp
+		types/Official.cpp
+		)
 
 add_library(${LIB_NAME} STATIC ${SRC_LIST})
 

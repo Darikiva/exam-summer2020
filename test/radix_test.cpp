@@ -1,6 +1,8 @@
 #include "doctest.h"
 #include "sortings/RadixSort.hpp"
 
+using namespace exam::sort;
+
 TEST_CASE("Radix Sort Int") {
     RadixSort<int> rs{std::vector<int>{170, 45, 75, 90, 802, 24, 2, 66}};
     rs.sort();
