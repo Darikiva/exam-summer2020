@@ -13,6 +13,8 @@ set(SRC_LIST
         trees/splay_map.hpp
 		trees/BplusTree.hpp
         trees/BplusTree.tpp
+		trees/BTree.hpp
+		trees/BTree.tpp
 
 
         lists/DLsircular.hpp
