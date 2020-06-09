@@ -6,6 +6,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(TOP_DIR ${CMAKE_SOURCE_DIR})
 set(SRC_DIR ${TOP_DIR}/src)
 set(TESTS_DIR ${TOP_DIR}/test)
+set(GUI_DIR ${TOP_DIR}/ui)
 
 set(CMAKE_BUILD_TYPE Debug)
 set(CMAKE_CXX_FLAGS "-g3")
@@ -22,6 +23,11 @@ if(BUILD_TEST)
     add_subdirectory(${TESTS_DIR})
 endif()
 
+option(BUILD_GUI "Build sorting algorithms visualization" ON)
+if (BUILD_GUI)
+    add_subdirectory(${GUI_DIR})
+endif()
 
-add_executable(main main.cpp)
+
+add_executable(main main.cpp src/sortings/CountSort.h src/sortings/BucketSort.h)
 target_link_libraries(main PRIVATE ${LIB_NAME})

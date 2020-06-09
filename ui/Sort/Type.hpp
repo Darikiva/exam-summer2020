@@ -4,7 +4,7 @@
 #include <optional>
 #include <variant>
 
-namespace exam::sort::type {
+namespace exam::ui::sort::type {
 
 struct Insertion {};
 struct Selection {};
@@ -51,4 +51,4 @@ constexpr auto from_string(const std::string_view str) noexcept -> std::optional
     return {};
 }
 
-} // namespace exam::sort::type
+} // namespace exam::ui::sort::type

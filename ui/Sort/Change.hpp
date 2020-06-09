@@ -2,7 +2,7 @@
 
 #include <variant>
 
-namespace exam::sort::change {
+namespace exam::ui::sort::change {
 namespace detail {
 
 template<typename It, template<typename> typename... Changes>
@@ -62,4 +62,4 @@ using Change = detail::parametrize<It,
     MergeSubranges
 >;
 
-} // namespace exam::sort::change
+} // namespace exam::ui::sort::change
