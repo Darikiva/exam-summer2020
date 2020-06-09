@@ -20,7 +20,7 @@ namespace exam::lists {
     }
 
     template<typename Item>
-    void DLsircular<Item>::remove(int index) {
+    void DLsircular<Item>::removeByIndex(int index) {
         if (start == nullptr) return;
         --size;
         if (start->_next == start) {
@@ -36,6 +36,25 @@ namespace exam::lists {
         node->_next->_prev = node->_prev;
         if (node == start) {
             start = start->_next;
+        }
+    }
+
+    template<typename Item>
+    void DLsircular<Item>::removeByValue(Item value) {
+        if(start->_value == value) {
+            removeByIndex(0);
+            return;
+        }
+        auto tmp = start;
+        int index = 0;
+        while(tmp->_next != start) {
+            if(tmp->_value == value) {
+                removeByIndex(index);
+                return;
+            } else {
+                index++;
+                tmp = tmp->_next;
+            }
         }
     }
 }

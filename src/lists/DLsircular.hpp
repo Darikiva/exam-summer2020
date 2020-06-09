@@ -22,11 +22,11 @@ namespace exam::lists {
         class Iterator {
         private:
             std::shared_ptr<Node> current;
-            int size;
             int count;
+            const DLsircular* list;
         public:
-            Iterator(std::shared_ptr<Node> current, int count, int size) :
-                    current{current}, count{count}, size{size} {};
+            Iterator(std::shared_ptr<Node> current, int count, const DLsircular* list) :
+                    current{current}, count{count},  list{list} {};
 
 
             Item operator*() {
@@ -44,17 +44,25 @@ namespace exam::lists {
             }
 
             Iterator &operator--() {
-                if (count == 0) count = size;
+                if (count == 0) count = list->getSize();
                 current = current->_prev;
                 --count;
                 return *this;
             }
 
             Iterator &operator++() {
-                if (count == size) count = 0;
+                if (count == list->getSize()) count = 0;
                 current = current->_next;
                 ++count;
                 return *this;
+            }
+
+            bool operator==(const Iterator& other) {
+                return (this->count == other.count);
+            }
+
+            int getCount() const {
+                return count;
             }
         };
 
@@ -63,7 +71,9 @@ namespace exam::lists {
 
         void add(Item value);
 
-        void remove(int index);
+        void removeByIndex(int index);
+
+        void removeByValue(Item value);
 
         std::shared_ptr<Node> getStart() const {
             return start;
@@ -71,21 +81,36 @@ namespace exam::lists {
 
 //
         Iterator begin() {
-            return Iterator(this->start, 0, size);
+            return Iterator(this->start, 0, this);
         }
 
 //
         Iterator end() {
-            return Iterator(this->start, size, size);
+            return Iterator(this->start, size, this);
         }
 
-        Iterator search(Item _value) {
+        Iterator searchByValue(Item _value) {
             for (auto it = begin(); it < end(); ++it) {
                 if (*it == _value) return it;
             }
             return end();
         };
 
+        Iterator searchByIndex(int index) {
+            auto tmp = start;
+            int count;
+            while(index != 0) {
+                tmp = tmp->_next;
+                --index;
+                ++count;
+                if(count == this->size) count = 0;
+            }
+            return Iterator(tmp, count, this);
+        }
+
+        int getSize() const {
+            return size;
+        }
     private:
         std::shared_ptr<Node> start;
         int size;
