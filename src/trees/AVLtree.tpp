@@ -2,8 +2,6 @@
 // Created by darik on 6/8/2020.
 //
 
- #include "AVLTree.hpp"
-
 namespace exam::trees {
     template<typename Item>
     void AVLTree<Item>::_rotateLeft(shared_ptr<AVLNode<Item>> node) {

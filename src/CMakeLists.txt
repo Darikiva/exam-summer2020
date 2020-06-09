@@ -18,7 +18,12 @@ set(SRC_LIST
         lists/DLsircular.hpp
         lists/DLsircular.tpp
 		lists/SL.hpp
-		lists/SLsircular.tpp lists/SLsircular.hpp)
+		lists/SLsircular.tpp
+		lists/SLsircular.hpp
+		
+		hash/linear.hpp
+		hash/cuckoo.hpp
+		)
 
 add_library(${LIB_NAME} STATIC ${SRC_LIST})
 
