@@ -4,7 +4,9 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 
 #include "doctest.h"
-#include "AVLtree.hpp"
+#include "trees/AVLtree.hpp"
+
+using namespace exam::trees;
 
 TEST_CASE ("AVLTree insertion") {
     {
