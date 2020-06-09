@@ -29,5 +29,5 @@ if (BUILD_GUI)
 endif()
 
 
-add_executable(main main.cpp)
+add_executable(main main.cpp src/sortings/CountSort.h src/sortings/BucketSort.h)
 target_link_libraries(main PRIVATE ${LIB_NAME})

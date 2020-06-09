@@ -1,32 +1,30 @@
 //
-// Created by darik on 6/8/2020.
+// Created by darik on 6/9/2020.
 //
-
 #pragma once
 
 #include <memory>
 
 namespace exam::lists {
-    template<typename Item>
-    class DLsircular {
+    template <typename Item>
+    class SLsircular{
         class Node {
         public:
             Item _value;
-            std::shared_ptr<Node> _prev;
             std::shared_ptr<Node> _next;
 
-            explicit Node(Item value, std::shared_ptr<Node> prev = nullptr, std::shared_ptr<Node> next = nullptr) :
-                    _value{value}, _prev{prev}, _next{next} {}
+            explicit Node(Item value, std::shared_ptr<Node> next = nullptr) :
+                    _value{value}, _next{next} {}
         };
 
         class Iterator {
         private:
             std::shared_ptr<Node> current;
             int count;
-            const DLsircular* list;
+            const SLsircular* list;
         public:
-            Iterator(std::shared_ptr<Node> current, int count, const DLsircular* list) :
-                    current{current}, count{count},  list{list} {};
+            Iterator(std::shared_ptr<Node> current, int count, const SLsircular* list) :
+                    current{current}, count{count}, list{list} {};
 
 
             Item operator*() {
@@ -45,7 +43,8 @@ namespace exam::lists {
 
             Iterator &operator--() {
                 if (count == 0) count = list->getSize();
-                current = current->_prev;
+                auto tmp = current;
+                while(current->_next != tmp) current = current->_next;
                 --count;
                 return *this;
             }
@@ -57,17 +56,13 @@ namespace exam::lists {
                 return *this;
             }
 
-            bool operator==(const Iterator& other) {
-                return (this->count == other.count);
-            }
-
             int getCount() const {
                 return count;
             }
         };
 
     public:
-        DLsircular() : start{nullptr}, size{0} {};
+        SLsircular() : start{nullptr}, size{0} {};
 
         void add(Item value);
 
@@ -88,6 +83,13 @@ namespace exam::lists {
         Iterator end() {
             return Iterator(this->start, size, this);
         }
+
+        Iterator search(Item _value) {
+            for (auto it = begin(); it < end(); ++it) {
+                if (*it == _value) return it;
+            }
+            return end();
+        };
 
         Iterator searchByValue(Item _value) {
             for (auto it = begin(); it < end(); ++it) {
@@ -117,4 +119,5 @@ namespace exam::lists {
     };
 }
 
-#include "DLsircular.tpp"
+
+#include "SLsircular.tpp"
