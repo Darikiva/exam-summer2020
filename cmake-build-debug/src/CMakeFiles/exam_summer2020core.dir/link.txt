@@ -1,0 +1,2 @@
+D:\Programming\mingw32\bin\ar.exe qc ..\lib\libexam_summer2020core.a  
+D:\Programming\mingw32\bin\ranlib.exe ..\lib\libexam_summer2020core.a

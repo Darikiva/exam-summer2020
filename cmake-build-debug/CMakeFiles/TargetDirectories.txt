@@ -1,0 +1,12 @@
+C:/Users/Snegovsky Vlad/Desktop/exam/exam-summer2020/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Snegovsky Vlad/Desktop/exam/exam-summer2020/cmake-build-debug/CMakeFiles/main.dir
+C:/Users/Snegovsky Vlad/Desktop/exam/exam-summer2020/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/Snegovsky Vlad/Desktop/exam/exam-summer2020/cmake-build-debug/CMakeFiles/test.dir
+C:/Users/Snegovsky Vlad/Desktop/exam/exam-summer2020/cmake-build-debug/src/CMakeFiles/exam_summer2020core.dir
+C:/Users/Snegovsky Vlad/Desktop/exam/exam-summer2020/cmake-build-debug/src/CMakeFiles/rebuild_cache.dir
+C:/Users/Snegovsky Vlad/Desktop/exam/exam-summer2020/cmake-build-debug/src/CMakeFiles/test.dir
+C:/Users/Snegovsky Vlad/Desktop/exam/exam-summer2020/cmake-build-debug/src/CMakeFiles/edit_cache.dir
+C:/Users/Snegovsky Vlad/Desktop/exam/exam-summer2020/cmake-build-debug/test/CMakeFiles/tests.dir
+C:/Users/Snegovsky Vlad/Desktop/exam/exam-summer2020/cmake-build-debug/test/CMakeFiles/rebuild_cache.dir
+C:/Users/Snegovsky Vlad/Desktop/exam/exam-summer2020/cmake-build-debug/test/CMakeFiles/test.dir
+C:/Users/Snegovsky Vlad/Desktop/exam/exam-summer2020/cmake-build-debug/test/CMakeFiles/edit_cache.dir
