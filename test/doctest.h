@@ -895,10 +895,10 @@ public:
 
 #ifdef DOCTEST_CONFIG_INCLUDE_TYPE_TRAITS
     template <typename T>
-    explicit Approx(const T& value,
-                    typename detail::enable_if<std::is_constructible<double, T>::value>::type* =
+    explicit Approx(const T& _value,
+                    typename detail::enable_if<std::is_constructible<double, T>::_value>::type* =
                             static_cast<T*>(nullptr)) {
-        *this = Approx(static_cast<double>(value));
+        *this = Approx(static_cast<double>(_value));
     }
 #endif // DOCTEST_CONFIG_INCLUDE_TYPE_TRAITS
 
@@ -906,7 +906,7 @@ public:
 
 #ifdef DOCTEST_CONFIG_INCLUDE_TYPE_TRAITS
     template <typename T>
-    typename detail::enable_if<std::is_constructible<double, T>::value, Approx&>::type epsilon(
+    typename detail::enable_if<std::is_constructible<double, T>::_value, Approx&>::type epsilon(
             const T& newEpsilon) {
         m_epsilon = static_cast<double>(newEpsilon);
         return *this;
@@ -917,7 +917,7 @@ public:
 
 #ifdef DOCTEST_CONFIG_INCLUDE_TYPE_TRAITS
     template <typename T>
-    typename detail::enable_if<std::is_constructible<double, T>::value, Approx&>::type scale(
+    typename detail::enable_if<std::is_constructible<double, T>::_value, Approx&>::type scale(
             const T& newScale) {
         m_scale = static_cast<double>(newScale);
         return *this;
@@ -942,7 +942,7 @@ public:
 
 #ifdef DOCTEST_CONFIG_INCLUDE_TYPE_TRAITS
 #define DOCTEST_APPROX_PREFIX \
-    template <typename T> friend typename detail::enable_if<std::is_constructible<double, T>::value, bool>::type
+    template <typename T> friend typename detail::enable_if<std::is_constructible<double, T>::_value, bool>::type
 
     DOCTEST_APPROX_PREFIX operator==(const T& lhs, const Approx& rhs) { return operator==(double(lhs), rhs); }
     DOCTEST_APPROX_PREFIX operator==(const Approx& lhs, const T& rhs) { return operator==(rhs, lhs); }
@@ -980,9 +980,9 @@ namespace detail {
     template<class T, unsigned N>   struct decay_array<T[N]> { typedef T* type; };
     template<class T>               struct decay_array<T[]>  { typedef T* type; };
 
-    template<class T>   struct not_char_pointer              { enum { value = 1 }; };
-    template<>          struct not_char_pointer<char*>       { enum { value = 0 }; };
-    template<>          struct not_char_pointer<const char*> { enum { value = 0 }; };
+    template<class T>   struct not_char_pointer              { enum { _value = 1 }; };
+    template<>          struct not_char_pointer<char*>       { enum { _value = 0 }; };
+    template<>          struct not_char_pointer<const char*> { enum { _value = 0 }; };
 
     template<class T> struct can_use_op : public not_char_pointer<typename decay_array<T>::type> {};
 #endif // DOCTEST_CONFIG_TREAT_CHAR_STAR_AS_STRING
@@ -1099,7 +1099,7 @@ namespace detail {
 #ifndef DOCTEST_CONFIG_TREAT_CHAR_STAR_AS_STRING
 #define DOCTEST_COMPARISON_RETURN_TYPE bool
 #else // DOCTEST_CONFIG_TREAT_CHAR_STAR_AS_STRING
-#define DOCTEST_COMPARISON_RETURN_TYPE typename enable_if<can_use_op<L>::value || can_use_op<R>::value, bool>::type
+#define DOCTEST_COMPARISON_RETURN_TYPE typename enable_if<can_use_op<L>::_value || can_use_op<R>::_value, bool>::type
     inline bool eq(const char* lhs, const char* rhs) { return String(lhs) == String(rhs); }
     inline bool ne(const char* lhs, const char* rhs) { return String(lhs) != String(rhs); }
     inline bool lt(const char* lhs, const char* rhs) { return String(lhs) <  String(rhs); }
@@ -2696,7 +2696,7 @@ DOCTEST_MSVC_SUPPRESS_WARNING(4626) // assignment operator was implicitly define
 DOCTEST_MSVC_SUPPRESS_WARNING(5027) // move assignment operator was implicitly defined as deleted
 DOCTEST_MSVC_SUPPRESS_WARNING(5026) // move constructor was implicitly defined as deleted
 DOCTEST_MSVC_SUPPRESS_WARNING(4625) // copy constructor was implicitly defined as deleted
-DOCTEST_MSVC_SUPPRESS_WARNING(4800) // forcing value to bool 'true' or 'false' (performance warning)
+DOCTEST_MSVC_SUPPRESS_WARNING(4800) // forcing _value to bool 'true' or 'false' (performance warning)
 // static analysis
 DOCTEST_MSVC_SUPPRESS_WARNING(26439) // This kind of function may not throw. Declare it 'noexcept'
 DOCTEST_MSVC_SUPPRESS_WARNING(26495) // Always initialize a member variable
@@ -3816,7 +3816,7 @@ namespace {
             if(curr->translate(res))
                 return res;
         // clang-format off
-        DOCTEST_GCC_SUPPRESS_WARNING_WITH_PUSH("-Wcatch-value")
+        DOCTEST_GCC_SUPPRESS_WARNING_WITH_PUSH("-Wcatch-_value")
         try {
             throw;
         } catch(std::exception& ex) {
@@ -3989,7 +3989,7 @@ namespace {
         FatalConditionHandler() {
             isSet = true;
             // 32k seems enough for doctest to handle stack overflow,
-            // but the value was found experimentally, so there is no strong guarantee
+            // but the _value was found experimentally, so there is no strong guarantee
             guaranteeSize = 32 * 1024;
             // Register an unhandled exception filter
             previousTop = SetUnhandledExceptionFilter(handleException);
@@ -4472,8 +4472,8 @@ namespace {
                     break;
                 }
                 // The header is valid, check data
-                // The next encBytes bytes must together be a valid utf-8
-                // This means: bitpattern 10XX XXXX and the extracted value is sane (ish)
+                // The _next encBytes bytes must together be a valid utf-8
+                // This means: bitpattern 10XX XXXX and the extracted _value is sane (ish)
                 bool valid = true;
                 uint32_t value = headerValue(c);
                 for (std::size_t n = 1; n < encBytes; ++n) {
@@ -4487,9 +4487,9 @@ namespace {
                     (!valid) ||
                     // Overlong encodings
                     (value < 0x80) ||
-                    (                 value < 0x800   && encBytes > 2) || // removed "0x80 <= value &&" because redundant
+                    (                 value < 0x800   && encBytes > 2) || // removed "0x80 <= _value &&" because redundant
                     (0x800 < value && value < 0x10000 && encBytes > 3) ||
-                    // Encoded value out of range
+                    // Encoded _value out of range
                     (value >= 0x110000)
                     ) {
                     hexEscapeChar(os, c);
@@ -5440,7 +5440,7 @@ namespace {
                 }
                 if(noBadCharsFound && argv[index][0] == '-') {
                     if(value) {
-                        // parsing the value of an option
+                        // parsing the _value of an option
                         temp += strlen(pattern);
                         const unsigned len = strlen(temp);
                         if(len) {
@@ -5448,7 +5448,7 @@ namespace {
                             return true;
                         }
                     } else {
-                        // just a flag - no value
+                        // just a flag - no _value
                         return true;
                     }
                 }
@@ -5487,7 +5487,7 @@ namespace {
             while(pch != nullptr) {
                 if(strlen(pch))
                     res.push_back(pch);
-                // uses the strtok() internal state to go to the next token
+                // uses the strtok() internal state to go to the _next token
                 // cppcheck-suppress strtokCalled
                 pch = std::strtok(nullptr, ",");
             }
@@ -5515,7 +5515,7 @@ namespace {
             const char positive[][5] = {"1", "true", "on", "yes"};  // 5 - strlen("true") + 1
             const char negative[][6] = {"0", "false", "off", "no"}; // 6 - strlen("false") + 1
 
-            // if the value matches any of the positive/negative possibilities
+            // if the _value matches any of the positive/negative possibilities
             for(unsigned i = 0; i < 4; i++) {
                 if(parsedValue.compare(positive[i], true) == 0) {
                     res = 1; //!OCLINT parameter reassignment

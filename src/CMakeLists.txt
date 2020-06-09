@@ -1,12 +1,13 @@
 set(LIB_NAME ${PROJECT_NAME}core)
 
 set(SRC_LIST
-        AVLtree.hpp
-        AVLtree.tpp
+		trees/AVLtree.hpp
+		trees/AVLtree.tpp
         
         sortings/Change.hpp
         sortings/Sort.hpp
         sortings/Type.hpp
+		sortings/RadixSort.hpp
 
         trees/splay_set.hpp
         trees/splay_map.hpp
@@ -16,7 +17,8 @@ set(SRC_LIST
 
         lists/DLsircular.hpp
         lists/DLsircular.tpp
-    )
+		lists/SL.hpp
+		lists/SLsircular.tpp lists/SLsircular.hpp sortings/BucketSort.h sortings/CountingSort.h)
 
 add_library(${LIB_NAME} STATIC ${SRC_LIST})
 

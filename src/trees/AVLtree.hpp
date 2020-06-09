@@ -11,6 +11,8 @@
 using std::shared_ptr;
 using std::make_shared;
 
+namespace exam::trees{
+
 template<typename Item>
 class AVLNode {
 public:
@@ -120,6 +122,7 @@ private:
     }
 };
 
+}
 #include "AVLtree.tpp"
 
 #endif //EXAM_SUMMER2020_AVLTREE_HPP

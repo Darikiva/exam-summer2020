@@ -278,7 +278,6 @@ void advanced_merge(It first, It middle, It last, std::vector<exam::sort::change
     }
 }
 
-
 } // namespace detail
 
 namespace exam::sort {
@@ -476,111 +475,6 @@ struct Sort<type::Heap>
     auto operator()(It first, It last) const -> std::vector<exam::sort::change::Change<It>>
     {
         return (*this)(first, last, std::less{});
-    }
-};
-
-/**
- * @brief Counting sort
- */
-
-template<typename T>
-class parallelCountingSort{
-    vector<vector<T>> divideArray(size_t num, vector<T> array){
-        std::vector<std::vector<T>> result;
-        size_t length = array.size() / num;
-        size_t remain = array.size() % num;
-        size_t begin = 0;
-        size_t end = 0;
-
-        for (size_t i = 0; i < std::min(num, array.size()); i++) {
-            end += (remain > 0) ? (length + ((remain--) != 0)) : length;
-            result.emplace_back(array.begin() + begin, array.begin() + end);
-            begin = end;
-        }
-
-        return result;
-    }
-    static void countElements(vector<T> temp, vector<T> &count, T min){
-        for(int i = 0; i < temp.size(); i++)
-            count[temp[i]-min]++;
-    }
-
-public:
-    void countSort(vector <T>& arr){
-        T max = *max_element(arr.begin(), arr.end());
-        T min = *min_element(arr.begin(), arr.end());
-        T range = max - min + 1;
-
-        vector<T> count(range), output(arr.size());
-
-        size_t thread_count = std::thread::hardware_concurrency();
-        vector<vector<T>> vectors = divideArray(thread_count, arr);
-        vector<thread> threads;
-        threads.reserve(vectors.size());
-        for(auto & vec : vectors) {
-            threads.emplace_back(countElements, vec, std::ref(count), min);
-        }
-        for(auto& th : threads) {
-            th.join();
-        }
-
-        for(int i = 1; i < count.size(); i++)
-            count[i] += count[i-1];
-
-        for(int i = arr.size()-1; i >= 0; i--)
-        {
-            output[ count[arr[i]-min] -1 ] = arr[i];
-            count[arr[i]-min]--;
-        }
-
-        for(int i=0; i < arr.size(); i++)
-            arr[i] = output[i];
-    }
-};
-
-/**
- * @brief Bucket sort
- */
-
-template<typename T>
-class parallelBucketSort{
-    static void sortArr(vector<T> &b){
-        sort(b.begin(), b.end());
-    }
-
-public:
-    void bucketSort(vector<T>& arr){
-        vector<T> b[arr.size()];
-
-        for (int i = 0; i < arr.size(); i++)
-        {
-            int bi = arr.size()*arr[i];
-            b[bi].push_back(arr[i]);
-        }
-
-        size_t thread_count = std::thread::hardware_concurrency();
-        if (arr.size() > thread_count){
-            for (int i = thread_count; i < arr.size() + thread_count; i += thread_count){
-                std::vector<std::thread> threads;
-                threads.reserve(thread_count);
-                if (i + thread_count == arr.size())
-                    thread_count = arr.size() - i - 1;
-                for(int j = 0; j < thread_count; j++) {
-                    threads.emplace_back(sortArr, std::ref(b[j]));
-                }
-                for(auto& th : threads) {
-                    th.join();
-                }
-            }
-        }
-
-        for (int i = 0; i < arr.size(); i++)
-            sort(b[i].begin(), b[i].end());
-
-        int index = 0;
-        for (int i = 0; i < arr.size(); i++)
-            for (int j = 0; j < b[i].size(); j++)
-                arr[index++] = b[i][j];
     }
 };
 

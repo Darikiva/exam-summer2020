@@ -1,46 +1,48 @@
 //
-// Created by darik on 6/8/2020.
+// Created by darik on 6/9/2020.
 //
 
-#include "DLsircular.hpp"
+#include "SLsircular.hpp"
 
-namespace exam::lists {
+namespace exam::lists{
     template<typename Item>
-    void DLsircular<Item>::add(Item value) {
+    void SLsircular<Item>::add(Item value) {
         if (start == nullptr) {
             start = std::make_shared<Node>(value);
-            start->_prev = start;
             start->_next = start;
         } else {
-            auto end = start->_prev;
-            end->_next = std::make_shared<Node>(value, end, start);
-            start->_prev = end->_next;
+            auto tmp = start;
+            while(tmp->_next != start) tmp = tmp->_next;
+            tmp->_next = std::make_shared<Node>(value, start);
         }
         ++size;
     }
 
     template<typename Item>
-    void DLsircular<Item>::removeByIndex(int index) {
+    void SLsircular<Item>::removeByIndex(int index) {
         if (start == nullptr) return;
         --size;
         if (start->_next == start) {
             start = nullptr;
             return;
         }
+        if (index == 0) {
+            auto tmp = start;
+            while(tmp->_next != start) tmp = tmp->_next;
+            tmp->_next = start->_next;
+            start = start->_next;
+            return;
+        }
         auto node = start;
-        while (index != 0) {
+        while (index != 1) {
             --index;
             node = node->_next;
         }
-        node->_prev->_next = node->_next;
-        node->_next->_prev = node->_prev;
-        if (node == start) {
-            start = start->_next;
-        }
+        node->_next = node->_next->_next;
     }
 
     template<typename Item>
-    void DLsircular<Item>::removeByValue(Item value) {
+    void SLsircular<Item>::removeByValue(Item value) {
         if(start->_value == value) {
             removeByIndex(0);
             return;
