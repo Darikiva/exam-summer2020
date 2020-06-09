@@ -3,10 +3,6 @@ set(LIB_NAME ${PROJECT_NAME}core)
 set(SRC_LIST
         AVLtree.hpp
         AVLtree.tpp
-        
-        sortings/Change.hpp
-        sortings/Sort.hpp
-        sortings/Type.hpp
 
         trees/splay_set.hpp
         trees/splay_map.hpp

@@ -2,8 +2,7 @@
 // Created by darik on 6/8/2020.
 //
 
-#ifndef EXAM_SUMMER2020_DLSIRCULAR_HPP
-#define EXAM_SUMMER2020_DLSIRCULAR_HPP
+#pragma once
 
 #include <memory>
 
@@ -85,6 +84,4 @@ private:
     int size;
 };
 
-#include "DLsircular.tpp""
-
-#endif //EXAM_SUMMER2020_DLSIRCULAR_HPP
+#include "DLsircular.tpp"
