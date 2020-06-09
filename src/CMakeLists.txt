@@ -7,6 +7,7 @@ set(SRC_LIST
         sortings/Change.hpp
         sortings/Sort.hpp
         sortings/Type.hpp
+		sortings/RadixSort.hpp
 
         trees/splay_set.hpp
         trees/splay_map.hpp

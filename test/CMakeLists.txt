@@ -5,6 +5,7 @@ set(SRC_LIST
     sort_test.cpp
     splay_test.cpp
     sl_test.cpp
+    radix_test.cpp
     )
 
 add_executable(tests ${SRC_LIST})
