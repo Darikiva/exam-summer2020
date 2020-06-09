@@ -16,6 +16,7 @@ set(SRC_LIST
 
         lists/DLsircular.hpp
         lists/DLsircular.tpp
+		lists/SL.hpp
     )
 
 add_library(${LIB_NAME} STATIC ${SRC_LIST})
