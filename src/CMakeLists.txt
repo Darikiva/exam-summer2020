@@ -1,8 +1,8 @@
 set(LIB_NAME ${PROJECT_NAME}core)
 
 set(SRC_LIST
-        AVLtree.hpp
-        AVLtree.tpp
+		trees/AVLtree.hpp
+		trees/AVLtree.tpp
         
         sortings/Change.hpp
         sortings/Sort.hpp
@@ -20,7 +20,7 @@ set(SRC_LIST
         lists/DLsircular.hpp
         lists/DLsircular.tpp
 		lists/SL.hpp
-    )
+		lists/SLsircular.tpp lists/SLsircular.hpp)
 
 add_library(${LIB_NAME} STATIC ${SRC_LIST})
 
