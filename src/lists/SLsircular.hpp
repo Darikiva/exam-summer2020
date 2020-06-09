@@ -1,22 +1,20 @@
 //
-// Created by darik on 6/8/2020.
+// Created by darik on 6/9/2020.
 //
-
 #pragma once
 
 #include <memory>
 
 namespace exam::lists {
-    template<typename Item>
-    class DLsircular {
+    template <typename Item>
+    class SLsircular{
         class Node {
         public:
             Item _value;
-            std::shared_ptr<Node> _prev;
             std::shared_ptr<Node> _next;
 
-            explicit Node(Item value, std::shared_ptr<Node> prev = nullptr, std::shared_ptr<Node> next = nullptr) :
-                    _value{value}, _prev{prev}, _next{next} {}
+            explicit Node(Item value, std::shared_ptr<Node> next = nullptr) :
+                    _value{value}, _next{next} {}
         };
 
         class Iterator {
@@ -45,7 +43,8 @@ namespace exam::lists {
 
             Iterator &operator--() {
                 if (count == 0) count = size;
-                current = current->_prev;
+                auto tmp = current;
+                while(current->_next != tmp) current = current->_next;
                 --count;
                 return *this;
             }
@@ -59,7 +58,7 @@ namespace exam::lists {
         };
 
     public:
-        DLsircular() : start{nullptr}, size{0} {};
+        SLsircular() : start{nullptr}, size{0} {};
 
         void add(Item value);
 
@@ -91,4 +90,6 @@ namespace exam::lists {
         int size;
     };
 }
-#include "DLsircular.tpp""
+
+
+#include "SLsircular.tpp"
