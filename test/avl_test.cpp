@@ -6,6 +6,8 @@
 #include "doctest.h"
 #include "trees/AVLtree.hpp"
 
+using namespace exam::trees;
+
 TEST_CASE ("AVLTree insertion") {
     {
         AVLTree<int> tree;
