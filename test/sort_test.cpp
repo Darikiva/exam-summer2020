@@ -5,6 +5,8 @@
 #include <list>
 #include <vector>
 #include <cassert>
+#include <iostream>
+
 
 TEST_CASE("[exam][sort]") {
     using namespace exam::sort::type;
@@ -14,7 +16,7 @@ TEST_CASE("[exam][sort]") {
         {},
         {42},
         {1, 0, -10, 12, 1002, 20},
-        {1, 0, -10, 12, 1002, 0, 20},
+        {1, 0, -10, 12, 1002, 0, 20, 1, 0, -10, 12, 1002, 0, 20},
         {1, 1, 2, 3, 3, 3, 10},
         {10, 9, 8, 8, 1, 1, -1},
     };
@@ -33,6 +35,7 @@ TEST_CASE("[exam][sort]") {
         {1, 0, -10, 12, 1002, 0, 20},
         {1, 1, 2, 3, 3, 3, 10},
         {10, 9, 8, 8, 1, 1, -1},
+        {1, 0, -10, 12, 1002, 0, 20, 1, 0, -10, 12, 1002, 0, 20},
     };
     auto FIter_direct_expected = FIter_cases;
     auto FIter_reverse_expected = FIter_cases;
@@ -48,6 +51,7 @@ TEST_CASE("[exam][sort]") {
         {1, 0, -10, 12, 1002, 0, 20},
         {1, 1, 2, 3, 3, 3, 10},
         {10, 9, 8, 8, 1, 1, -1},
+        {1, 0, -10, 12, 1002, 0, 20, 1, 0, -10, 12, 1002, 0, 20},
     };
     auto BIter_direct_expected = BIter_cases;
     auto BIter_reverse_expected = BIter_cases;
