@@ -7,8 +7,12 @@ set(SRC_LIST
         sortings/Change.hpp
         sortings/Sort.hpp
         sortings/Type.hpp
-        
-        trees/splay.hpp
+
+        trees/splay_set.hpp
+        trees/splay_map.hpp
+
+        lists/DLsircular.hpp
+        lists/DLsircular.tpp
     )
 
 add_library(${LIB_NAME} STATIC ${SRC_LIST})

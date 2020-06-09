@@ -1,5 +1,6 @@
 #include <iostream>
 #include <trees/splay_set.hpp>
+#include "lists/DLsircular.hpp"
 
 void fukc(exam::trees::SplaySet<int> &t, int val) {
     if (t.exist(val) != t.end()) {
@@ -10,14 +11,15 @@ void fukc(exam::trees::SplaySet<int> &t, int val) {
 }
 
 int main() {
-    exam::trees::SplaySet<int> t1;
-    exam::trees::SplaySet<int> t2;
-    t1.insert(10);
-    t2.insert(42);
-    auto t3 = exam::trees::unite(t1, t2);
-    fukc(t3, 42);
-    fukc(t3, 10);
+    DLsircular<int> list;
+    for(int i = 0; i < 10; ++i)
+        list.add(i);
 
-    
+    for(auto i:list) std::cout << i << " ";
+    for(int i = 0; i < 10; ++i){
+        list.remove(0);
+        for(auto j:list) std::cout << j << " ";
+        std::cout << std::endl;
+    }
     return 0;
 }
