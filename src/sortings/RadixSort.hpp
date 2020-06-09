@@ -9,7 +9,7 @@ namespace exam::sort {
     class RadixSort {
     private:
         std::vector<Item> elements;
-        const int SYSTEM = 10;
+        static constexpr int SYSTEM = 10;
     private:
         Item getMax();
 

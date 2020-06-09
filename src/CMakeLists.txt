@@ -1,21 +1,14 @@
 set(LIB_NAME ${PROJECT_NAME}core)
 
 set(SRC_LIST
-		trees/AVLtree.hpp
-		trees/AVLtree.tpp
-        
-        sortings/Change.hpp
-        sortings/Sort.hpp
-        sortings/Type.hpp
-		sortings/RadixSort.hpp
+        trees/AVLTree.hpp
+        trees/AVLTree.tpp
 
         trees/splay_set.hpp
         trees/splay_map.hpp
 		trees/BplusTree.hpp
         trees/BplusTree.tpp
 		trees/BTree.hpp
-		trees/BTree.tpp
-
 
         lists/DLsircular.hpp
         lists/DLsircular.tpp

@@ -242,7 +242,4 @@ namespace exam::trees {
         };
     };
 
-
 } // namespace exam::trees
-
-#include "BTree.tpp"

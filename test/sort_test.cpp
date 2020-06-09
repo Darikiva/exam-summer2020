@@ -1,16 +1,15 @@
 #include "doctest.h"
-#include "sortings/Sort.hpp"
+#include "../ui/Sort/Sort.hpp"
 
 #include <forward_list>
 #include <list>
 #include <vector>
 #include <cassert>
-#include <iostream>
 
 
 TEST_CASE("[exam][sort]") {
-    using namespace exam::sort::type;
-    using namespace exam::sort;
+    using namespace exam::ui::sort::type;
+    using namespace exam::ui::sort;
 
     const std::vector<std::vector<int>> RAIter_cases = {
         {},

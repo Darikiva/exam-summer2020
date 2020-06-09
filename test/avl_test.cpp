@@ -4,7 +4,9 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 
 #include "doctest.h"
-#include "trees/AVLtree.hpp"
+#include "../src/trees/AVLTree.hpp"
+
+#include <cstdlib>
 
 using namespace exam::trees;
 
@@ -47,7 +49,7 @@ TEST_CASE ("AVLTree search") {
     }
 
     for (int i = 0; i < 10; ++i) {
-        int searching = rand() % 40;
+        int searching = std::rand() % 40;
                 REQUIRE(tree.search(searching)->_key == searching);
     }
 
