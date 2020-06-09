@@ -7,6 +7,8 @@ set(SRC_LIST
         sortings/Change.hpp
         sortings/Sort.hpp
         sortings/Type.hpp
+        
+        trees/splay.hpp
     )
 
 add_library(${LIB_NAME} STATIC ${SRC_LIST})
